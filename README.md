@@ -1,227 +1,75 @@
-# German AI Tutor
+# React + TypeScript + Vite
 
-An AI-powered German conversation tutor designed to help learners improve fluency through natural conversation, adaptive corrections, and personalized learning memory.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This project combines:
+Currently, two official plugins are available:
 
-* Conversational AI
-* Language learning
-* Speech technologies
-* Learning analytics
-* Full-stack engineering
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-The goal is to create a tutor that feels more like a real conversational partner than a traditional exercise app.
+## React Compiler
 
----
+The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
 
-# Features (Planned)
+Note: This will impact Vite dev & build performances.
 
-## MVP
+## Expanding the ESLint configuration
 
-* Text-based German conversations
-* Grammar corrections
-* Natural phrasing suggestions
-* Context-aware follow-up questions
-* Conversation history
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## Phase 2
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-* Persistent learner memory
-* Recurring mistake tracking
-* Vocabulary tracking
-* Personalized tutoring prompts
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-## Phase 3
-
-* Voice input
-* Speech-to-text
-* Text-to-speech
-* Realtime conversations
-
-## Future Ideas
-
-* Electron desktop app
-* React Native mobile app
-* Spaced repetition system
-* Learning analytics dashboard
-* Pronunciation feedback
-* CEFR progression tracking
-
----
-
-# Tech Stack
-
-## Frontend
-
-* React
-* Vite
-* TypeScript
-
-## Backend
-
-* FastAPI
-* Python
-
-## Database
-
-* SQLite
-
-## AI
-
-* OpenAI API
-
----
-
-# Repository Structure
-
-```text
-german-ai-tutor/
-│
-├── frontend/
-│   ├── src/
-│   └── package.json
-│
-├── backend/
-│   ├── app/
-│   ├── requirements.txt
-│   └── german_tutor.db
-│
-└── docs/
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
----
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-# Architecture Overview
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-```text
-Frontend
-   ↓
-FastAPI API
-   ↓
-Tutor Service
-   ↓
-Memory Service
-   ↓
-OpenAI Service
-   ↓
-Response
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-## Core Design Principles
-
-* Fluency over perfection
-* Lightweight corrections
-* Adaptive learning
-* Separation of concerns
-* Progressive complexity
-* Fast iteration
-
----
-
-# Development Philosophy
-
-This project intentionally starts simple.
-
-The initial focus is:
-
-* validating the tutoring experience
-* creating useful conversational flows
-* building sustainable learning loops
-
-Complexity such as:
-
-* realtime infrastructure
-* advanced memory systems
-* distributed services
-* vector databases
-
-will only be added once the product justifies them.
-
----
-
-# Current Status
-
-🚧 Early development / MVP phase
-
-Initial milestone:
-
-* User sends German text
-* AI returns:
-
-  * correction
-  * explanation
-  * natural response
-  * follow-up question
-
----
-
-# Getting Started
-
-## Backend
-
-```bash
-cd backend
-
-python -m venv venv
-
-source venv/bin/activate
-# Windows:
-# venv\Scripts\activate
-
-pip install -r requirements.txt
-
-uvicorn app.main:app --reload
-```
-
----
-
-## Frontend
-
-```bash
-cd frontend
-
-npm install
-
-npm run dev
-```
-
----
-
-# Environment Variables
-
-Create a `.env` file in the backend folder:
-
-```env
-OPENAI_API_KEY=your_api_key_here
-```
-
----
-
-# Long-Term Vision
-
-The long-term goal is to build a personalized conversational language-learning system that:
-
-* adapts to the learner
-* tracks recurring weaknesses
-* encourages speaking confidence
-* provides realistic conversational practice
-* combines AI tutoring with learning analytics
-
----
-
-# Why This Project Exists
-
-Most language-learning apps:
-
-* overfocus on drills
-* interrupt too often
-* lack personalization
-* do not adapt to recurring learner mistakes
-
-This project aims to create a more natural and motivating learning experience using modern AI capabilities.
-
----
-
-# License
-
-MIT License
