@@ -23,24 +23,33 @@ class User(Base):
     learning_language = Column(Text, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
+    def update(self, usename: str):
+        self.username = usename
+
 
 class Session(Base):
     __tablename__= "sessions"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(Integer, ForeignKey(User.id), nullable=False)
-    topic = Column(Text, nullable=False)
-    session_type = Column(Text, nullable=False) # session_type IN ('free_conversation','grammar_practice','roleplay','vocabulary_review', 'exam_prep', 'pronunciation', 'work_conversation')        ),
+    user_id = Column(Text, ForeignKey(User.id), nullable=False)
+    topic = Column(Text)
+    session_type = Column(Text) # session_type IN ('free_conversation','grammar_practice','roleplay','vocabulary_review', 'exam_prep', 'pronunciation', 'work_conversation')        ),
     started_at = Column(DateTime, default=datetime.utcnow)
-    ended_at = Column(DateTime, nullable=False)
-    duration_seconds = Column(Integer, nullable=False)
+    ended_at = Column(DateTime)
+    duration_seconds = Column(Integer)
+
+    def endSession(self, topic: str, session_type: str):
+        self.topic = topic
+        self.session_type = session_type
+        self.ended_at = datetime.utcnow()
+        self.duration_seconds = (datetime.utcnow() - self.started_at).total_seconds()
 
 class Message(Base):
     __tablename__= "messages"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(Integer, ForeignKey(User.id), nullable=False)
-    session_id = Column(Integer, ForeignKey(Session.id), nullable=False)
+    user_id = Column(Text, ForeignKey(User.id), nullable=False)
+    session_id = Column(Text, ForeignKey(Session.id), nullable=False)
     role = Column(Text, ) # Nedd to implement restrictions role in [user, assitant, system]
     created_at = Column(DateTime, default=datetime.utcnow)
 
@@ -49,9 +58,9 @@ class Mistake(Base):
     __tablename__= "mistakes"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(Integer, ForeignKey(User.id), nullable=False)
-    session_id = Column(Integer, ForeignKey(Session.id), nullable=False)
-    message_id = Column(Integer, ForeignKey(Message.id), nullable=False)
+    user_id = Column(Text, ForeignKey(User.id), nullable=False)
+    session_id = Column(Text, ForeignKey(Session.id), nullable=False)
+    message_id = Column(Text, ForeignKey(Message.id), nullable=False)
     original_text = Column(Text, nullable=False)
     corrected_text = Column(Text, nullable=False)
     category = Column(Text, nullable=False)
@@ -82,7 +91,7 @@ class Vocabulary(Base):
     __tablename__= "vocabulary"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(Integer, ForeignKey(User.id), nullable=False)
+    user_id = Column(Text, ForeignKey(User.id), nullable=False)
     word = Column(Text, nullable=False)
     translation = Column(Text)
     exposure_count = Column(Integer, default=0)
@@ -93,8 +102,8 @@ class SessionSummary(Base):
     __tablename__= "sessino_summaries"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(Integer, ForeignKey(User.id), nullable=False)
-    session_id = Column(Integer, ForeignKey(Session.id), nullable=False)
+    user_id = Column(Text, ForeignKey(User.id), nullable=False)
+    session_id = Column(Text, ForeignKey(Session.id), nullable=False)
     summary = Column(Text, nullable=False)
     strengths = Column(Text)
     weaknesses = Column(Text)

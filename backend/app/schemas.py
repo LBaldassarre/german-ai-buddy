@@ -13,11 +13,12 @@ class UserT(BaseModel):
     interface_language: str
     learning_language: str
 
-class SessionT(BaseModel):
+class SessionEndT(BaseModel):
+    id: str
     user_id: str
     topic: str
     session_type: str
-    ended_at: datetime
+    started_at: datetime
 
 class MessageT(BaseModel):
     user_id: str
