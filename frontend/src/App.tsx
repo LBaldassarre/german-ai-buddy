@@ -1,11 +1,15 @@
 import './App.css'
-import Chat from './pages/chat'
+import SidePane from './components/SidePane/SidePane'
+import Chat from './pages/Chat'
 
 function App() {
 
   return (
     <>
-      <Chat/>
+      <div className="app-container">
+        <SidePane/>
+        <Chat/>
+      </div>
     </>
   )
 }

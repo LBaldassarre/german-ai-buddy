@@ -1,0 +1,116 @@
+.chat-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cc-header{
+    flex-grow: 1fr;
+    max-height: 15vh;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+}
+
+.cc-header-title{
+    font-size: var(--fs-xl);
+}
+
+.cc-header-subtitle{
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+}
+
+.cc-chat{
+    width: 100%;
+    flex-grow: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.cc-message-buddy{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+    padding: 1.5rem;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-md);
+}
+
+.cc-message-buddy-lable{
+    font-size: var(--fs-xs);
+}
+
+.cc-message-buddy-translation{
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+}
+
+.cc-message-buddy-stats{
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    align-self: self-end;
+    display: flex;
+    gap: 1rem;
+}
+
+.cc-message-buddy-send{
+    display: flex;
+}
+
+.cc-message-buddy-send img {
+    width: var(--fs-xl);
+}
+
+.cc-message-buddy-send img:nth-child(2){
+    margin-left: -15px;
+}
+
+.cc-message-user{
+    width: 50%;
+    align-self: self-end;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+    padding: 1.5rem;
+    background-color: var(--color-primary-800);
+    border-radius: var(--radius-md);
+}
+
+.cc-message-user-lable{
+    font-size: var(--fs-xs);
+}
+
+.cc-message-user-translation{
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+}
+
+.cc-message-user-stats{
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    align-self: self-end;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.cc-message-user-send{
+    display: flex;
+}
+
+.cc-message-user-send img {
+    width: var(--fs-xl);
+}
+
+.cc-message-user-send img:nth-last-child(){
+    margin-left: -15px;
+}
