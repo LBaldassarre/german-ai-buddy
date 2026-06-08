@@ -1,5 +1,7 @@
 import "./Chat.css";
 import checkIcon from "../assets/check.svg";
+import sendIcon from "../assets/send.svg";
+import micIcon from "../assets/mic.svg";
 
 function Chat() {
 
@@ -46,8 +48,12 @@ function Chat() {
                     <div className="cc-io-type">
                         <input type="text" placeholder="Type your message in German" />
                     </div>
-                    <div className="cc-io-record"></div>
-                    <div className="cc-io-send"></div>
+                    <div className="cc-io-send">
+                        <img src={micIcon} alt="mic"/>
+                    </div>
+                    <div className="cc-io-record">
+                        <img src={sendIcon} alt="send"/>
+                    </div>
                 </div>
             </div>
         </div>

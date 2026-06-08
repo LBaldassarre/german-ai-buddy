@@ -1,5 +1,6 @@
 import './SidePane.css'
 import userIcon from '../../assets/user.svg'
+import logo from '../../assets/logo.png'
 
 function SidePane() {
     return (
@@ -7,7 +8,7 @@ function SidePane() {
         <div className="side-pane">
             <div className="sd-header">
                 <div className="sd-header-icon">
-                            GB
+                    <img src={logo} alt="GB" />
                 </div>
                 <div className="sd-header-title">
                             German AI Buddy

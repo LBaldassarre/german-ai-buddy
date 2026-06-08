@@ -1,33 +1,33 @@
 :root {
-/* ===== Brand ===== */
---color-primary-100: #DCF9EE;
---color-primary-200: #B7F2DD;
---color-primary-300: #8CEBC9;
---color-primary-400: #52E0AD;
---color-primary-500: #34D399;
---color-primary-600: #2E9C73;
---color-primary-700: #1E7A5C;
---color-primary-800: #14503D;
---color-primary-900: #0F3A2D;
+/* ===== Brand / Primary Green ===== */
+--color-primary-100: #CFEFE1;
+--color-primary-200: #9EDDC3;
+--color-primary-300: #62C79E;
+--color-primary-400: #35B984;
+--color-primary-500: #159A6C;
+--color-primary-600: #0D7A56;
+--color-primary-700: #075C41;
+--color-primary-800: #043F2E;
+--color-primary-900: #022B20;
 
 /* ===== Dark Theme ===== */
---color-bg: #0B1020;
---color-surface: #151B2D;
---color-surface-2: #1C2438;
---color-border: #2B344A;
---color-border-strong: #3B4863;
+--color-bg: #080C12;
+--color-surface: #151A21;
+--color-surface-2: #1E242C;
+--color-border: #2A313A;
+--color-border-strong: #3A444F;
 
 /* ===== Text ===== */
---color-text: #F5F7F9;
---color-text-secondary: #B6C0CF;
---color-text-muted: #7C8798;
+--color-text: #F4F6F5;
+--color-text-secondary: #B8C0BD;
+--color-text-muted: #7D8784;
 
 /* ===== Semantic ===== */
---color-success: #34D399;
---color-error: #EF6A6A;
---color-warning: #F4B860;
---color-info: #6D8CFF;
---color-purple: #A78BFA;
+--color-success: #35B984;
+--color-error: #E56B63;
+--color-warning: #F6C35B;
+--color-info: #4F7DF3;
+--color-purple: #7C5CF3;
 
 /* ===== Effects ===== */
 --shadow-sm: 0 2px 8px rgba(0,0,0,.15);
@@ -36,7 +36,7 @@
 
 --radius-sm: 8px;
 --radius-md: 12px;
---radius-lg: 16px;
+--radius-lg: 32px;
 
 --transition: 0.2s ease;
 

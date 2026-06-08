@@ -2,16 +2,16 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 10px;
 }
 
 .cc-header{
-    flex-grow: 1fr;
-    max-height: 15vh;
-    align-self: flex-start;
+    height: 10vh;
     display: flex;
     flex-direction: column;
     align-items: start;
+    justify-content: center;
     width: 100%;
 }
 
@@ -111,6 +111,60 @@
     width: var(--fs-xl);
 }
 
-.cc-message-user-send img:nth-last-child(){
+.cc-message-user-send img:nth-child(2){
     margin-left: -15px;
+}
+
+.cc-io{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+}
+
+.cc-io-type{
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.cc-io-type input{
+    width: 100%;
+    text-align: start;
+    color: var(--color-text);
+    padding: 1rem;
+    background: none;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-text-muted);
+}
+
+.cc-io-type input::placeholder{
+    color: var(--color-text-muted);
+}
+
+.cc-io-type input:focus{
+    outline: none;
+}
+
+.cc-io-send, .cc-io-record{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cc-io img{
+    width: 3rem;
+    border: 1px solid var(--color-text-muted);
+    border-radius: 50%;
+    padding: 0.5rem;
+}
+
+.cc-io img:hover{
+    border: 3px solid var(--color-primary-800);
+}
+
+.cc-io img::after{
+    width: 2.8rem;
 }
