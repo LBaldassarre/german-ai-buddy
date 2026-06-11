@@ -55,6 +55,12 @@
 --fs-4xl: 2.25rem;  /* 36px */
 --fs-5xl: 3rem;     /* 48px */
 
+--fw-normal: 400;
+--fw-medium: 500;
+--fw-semibold: 600;
+--fw-bold: 700;
+--fw-extrbold: 800;
+
 font: 18px/145% var(--sans);
 letter-spacing: 0.18px;
 color-scheme: light dark;

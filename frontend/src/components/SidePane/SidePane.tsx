@@ -1,8 +1,12 @@
-import './SidePane.css'
-import userIcon from '../../assets/user.svg'
-import logo from '../../assets/logo.png'
+import './SidePane.css';
+import NavItem from '../NavItem/NavItem';
+import userIcon from '../../assets/user.svg';
+import logo from '../../assets/logo.png';
+import { useState } from 'react';
 
 function SidePane() {
+    const [selectedItem, setSelectedItem] = useState('Chat');
+
     return (
     <>
         <div className="side-pane">
@@ -17,12 +21,55 @@ function SidePane() {
 
             <div className="sd-nav">
                 <ul>
-                    <li>New Conversation</li>
-                    <li>Chat</li>
-                    <li>History</li>
-                    <li>Mistakes</li>
-                    <li>Progress</li>
-                    <li>Settings</li>
+                    <NavItem 
+                        label='New Conversation' 
+                        newConversation={true} 
+                        icon='add'
+                        isSelected={selectedItem === 'New Conversation'}
+                        onClick={() => setSelectedItem('Chat')}
+                    />
+                    <NavItem 
+                        label='Chat' 
+                        newConversation={false} 
+                        icon='forum'
+                        isSelected={selectedItem === 'Chat'}
+                        onClick={() => setSelectedItem('Chat')}
+                    />
+                    <NavItem 
+                        label='History' 
+                        newConversation={false} 
+                        icon='history_2'
+                        isSelected={selectedItem === 'History'}
+                        onClick={() => setSelectedItem('History')}
+                    />
+                    <NavItem 
+                        label='Vocabulary' 
+                        newConversation={false} 
+                        icon='book_5'
+                        isSelected={selectedItem === 'Vocabulary'}
+                        onClick={() => setSelectedItem('Vocabulary')}
+                    />
+                    <NavItem 
+                        label='Mistakes' 
+                        newConversation={false} 
+                        icon='mystery'
+                        isSelected={selectedItem === 'Mistakes'}
+                        onClick={() => setSelectedItem('Mistakes')}
+                    />
+                    <NavItem 
+                        label='Progress' 
+                        newConversation={false} 
+                        icon='finance_mode'
+                        isSelected={selectedItem === 'Progress'}
+                        onClick={() => setSelectedItem('Progress')}
+                    />
+                    <NavItem 
+                        label='Settings' 
+                        newConversation={false} 
+                        icon='settings'
+                        isSelected={selectedItem === 'Settings'}
+                        onClick={() => setSelectedItem('Settings')}
+                    />
                 </ul>
             </div> 
                 
