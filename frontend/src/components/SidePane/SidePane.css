@@ -1,24 +1,30 @@
 .side-pane{
     flex-grow: 1;
-    max-width: 35vh;
+    max-width: 25vh;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
+    background-color: var(--color-surface-2);
     border-right: 1px solid var(--color-border);
     gap: 10px;
 }
 
 .sd-header{
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    height: 7vh;
+    display: grid;
+    grid-template-areas: 
+        "h-icon h-title"
+        "h-icon h-subtitle";
+    grid-template-columns: 3rem 1fr;
+    grid-template-rows: repeat(2, 1rem);
+    align-content: center;
+    gap: 0.4rem;
 }
 
 .sd-header-icon{
+    grid-area: h-icon;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,9 +32,20 @@
 }
 
 .sd-header-icon img{
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    height: 70%;
     object-fit: contain;
+}
+
+.sd-header-title{
+    grid-area: h-title;
+}
+
+.sd-header-subtitle{
+    grid-area: h-subtitle;
+    font-size: var(--fs-xxs);
+    color: var(--color-text-secondary);
+    text-align: start;
 }
 
 .sd-nav{
@@ -39,15 +56,15 @@
 }
 
 .sd-user{
-    width: 70%;
+    width: 100%;
     font-size: var(--fs-xs);
     flex-grow: 2;
     display: grid;
     grid-template-areas: 
-        "img user-name"
-        "img user-level"
-        "img user-bar";
-    grid-template-columns: 3rem 1fr;
+        "img user-name theme-btn"
+        "img user-level theme-btn"
+        "img user-bar theme-btn";
+    grid-template-columns: 3rem 1fr 1fr;
     grid-template-rows: repeat(3, 1rem);
     column-gap: 0.5rem;
 }
@@ -82,4 +99,20 @@
         var(--color-success) 66%,
         var(--color-border-strong) 44%
     ); 
+}
+
+.sd-user-theme{
+    grid-area: theme-btn;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sd-user-theme button{
+    background: none;
+    border: none;
+    width: 3rem;
+    height: 3rem;
+    font-size: var(--fs-2xl);
+    cursor: pointer;
 }

@@ -2,10 +2,25 @@ import './SidePane.css';
 import NavItem from '../NavItem/NavItem';
 import userIcon from '../../assets/user.svg';
 import logo from '../../assets/logo.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 
 function SidePane() {
     const [selectedItem, setSelectedItem] = useState('Chat');
+    const [selectedTheme, setSelectedTheme] = useState('light_mode');
+
+    function toggleTheme() {
+        setSelectedTheme(prev =>
+            prev === 'dark_mode' ? 'light_mode' : 'dark_mode'
+        );
+    }
+
+    useEffect(() => {
+        document.documentElement.setAttribute(
+            'data-theme',
+            selectedTheme
+        );
+    }, [selectedTheme]);
 
     return (
     <>
@@ -15,7 +30,10 @@ function SidePane() {
                     <img src={logo} alt="GB" />
                 </div>
                 <div className="sd-header-title">
-                            German AI Buddy
+                    German AI Buddy
+                </div>
+                <div className="sd-header-subtitle">
+                    Your learning companion
                 </div>
             </div>
 
@@ -84,7 +102,13 @@ function SidePane() {
                     A2
                 </div>
                 <div className="sd-user-bar"></div>
+                <div className="sd-user-theme">
+                    <button className="material-symbols-outlined" onClick={toggleTheme}>
+                        {selectedTheme}
+                    </button>
+                </div>
             </div>
+
         </div>
     </>
     )

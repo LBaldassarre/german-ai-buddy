@@ -1,13 +1,15 @@
 .chat-container{
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 10px;
 }
 
 .cc-header{
-    height: 10vh;
+    height: 7vh;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -25,7 +27,7 @@
 }
 
 .cc-chat{
-    width: 100%;
+    width: 70%;
     flex-grow: 10;
     display: flex;
     flex-direction: column;
@@ -43,6 +45,7 @@
     padding: 1.5rem;
     background-color: var(--color-surface);
     border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-strong);
 }
 
 .cc-message-buddy-lable{
@@ -71,7 +74,7 @@
 }
 
 .cc-message-buddy-send img:nth-child(2){
-    margin-left: -15px;
+    margin-left: -12px;
 }
 
 .cc-message-user{
@@ -82,8 +85,12 @@
     align-items: start;
     gap: 5px;
     padding: 1.5rem;
-    background-color: var(--color-primary-800);
+    background-color: var(--color-user-message);
     border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-strong);
+/* 
+    background: var(--color-surface);
+    border: 1px solid var(--color-border); */
 }
 
 .cc-message-user-lable{
@@ -112,10 +119,11 @@
 }
 
 .cc-message-user-send img:nth-child(2){
-    margin-left: -15px;
+    margin-left: -12px;
 }
 
 .cc-io{
+    width: 70%;
     flex-grow: 1;
     display: flex;
     align-items: center;
@@ -159,12 +167,9 @@
     border: 1px solid var(--color-text-muted);
     border-radius: 50%;
     padding: 0.5rem;
+    cursor: pointer;
 }
 
 .cc-io img:hover{
-    border: 3px solid var(--color-primary-800);
-}
-
-.cc-io img::after{
-    width: 2.8rem;
+    background-color: var(--color-surface-3);
 }
