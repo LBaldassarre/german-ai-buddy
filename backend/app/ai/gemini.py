@@ -6,7 +6,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class GeminiAPI:
-    client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
+    def __init__(self):
+        self.client = genai.Client(
+            api_key=os.getenv("GEMINI_API_KEY")
+        )
 
     async def gemini_response(self, prompt):  
             response = self.client.models.generate_content(

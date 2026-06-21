@@ -1,8 +1,7 @@
-from app.db.schema import Message
-from app.models import message_model
+from app.models.message_model import Message
 from app.services.session_service import SessionService
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.gemini.gemini import GeminiAPI
+from app.ai.gemini import GeminiAPI
 from datetime import datetime
 import uuid
 
@@ -19,8 +18,8 @@ class MessageService:
         message = Message( 
                     # user_id = current_session.user_id,
                     # session_id = current_session.id,
-                    user_id = uuid.uuid4,
-                    session_id = uuid.uuid4,
+                    user_id = uuid.uuid4(),
+                    session_id = uuid.uuid4(),
                     promt = promt,
                     response = response,
                     role = 'User'
