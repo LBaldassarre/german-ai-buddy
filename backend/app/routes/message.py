@@ -1,12 +1,19 @@
-from openai import OpenAI
-from dotenv import load_dotenv
+from fastapi import APIRouter
+from app.db.schema import Message
+from app.services.message_service import MessageService
+from app.db.schema import async_session_maker
+from pydantic import BaseModel
 
-load_dotenv()
-client = OpenAI()
+class PromptRequest(BaseModel):
+    prompt: str
 
-response = client.responses.create(
-    model="gpt-5.5",
-    input="Write a one-sentence bedtime story about a unicorn."
-)
 
-print(response.output_text)
+router = APIRouter()
+
+def get_message_service() -> MessageService:
+    return MessageService(session=async_session_maker())
+
+@router.post("/message/send-message")
+async def send_message(promt):
+    message_service = get_message_service()
+    return await message_service.send_message(promt=promt)

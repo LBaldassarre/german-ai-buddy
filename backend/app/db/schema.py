@@ -48,7 +48,9 @@ class Message(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     user_id = Column(Text, ForeignKey(User.id), nullable=False)
     session_id = Column(Text, ForeignKey(Session.id), nullable=False)
-    role = Column(Text, ) # Nedd to implement restrictions role in [user, assitant, system]
+    promt = Column(Text)
+    response = Column(Text)
+    role = Column(Text) # Nedd to implement restrictions role in [user, assitant, system]
     created_at = Column(DateTime, default=datetime.utcnow)
 
 
