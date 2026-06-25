@@ -1,5 +1,4 @@
 import "./Chat.css";
-import checkIcon from "../assets/check.svg";
 import sendIcon from "../assets/send.svg";
 import micIcon from "../assets/mic.svg";
 
