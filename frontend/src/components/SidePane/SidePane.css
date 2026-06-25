@@ -39,6 +39,7 @@
 
 .sd-header-title{
     grid-area: h-title;
+    font-size: var(--fs-md);
 }
 
 .sd-header-subtitle{
