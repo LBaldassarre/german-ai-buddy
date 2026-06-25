@@ -8,48 +8,26 @@
     gap: 10px;
 }
 
-.cc-header{
-    height: 7vh;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    width: 100%;
-}
-
-.cc-header-title{
-    font-size: var(--fs-xl);
-}
-
-.cc-header-subtitle{
-    font-size: var(--fs-xs);
-    color: var(--color-text-muted);
-}
-
 .cc-chat{
-    width: 70%;
+    width: 80%;
     flex-grow: 10;
     display: flex;
     flex-direction: column;
     align-items: start;
     padding: 1rem;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
-.cc-message-buddy{
-    width: 50%;
+.cc-message{
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: start;
     gap: 5px;
     padding: 1.5rem;
     background-color: var(--color-surface);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     border: 1px solid var(--color-border-strong);
-}
-
-.cc-message-buddy-lable{
-    font-size: var(--fs-xs);
 }
 
 .cc-message-buddy-translation{
@@ -57,73 +35,13 @@
     color: var(--color-text-muted);
 }
 
-.cc-message-buddy-stats{
-    font-size: var(--fs-sm);
-    color: var(--color-text-muted);
+.cc-message.user{
     align-self: self-end;
-    display: flex;
-    gap: 1rem;
-}
-
-.cc-message-buddy-send{
-    display: flex;
-}
-
-.cc-message-buddy-send img {
-    width: var(--fs-xl);
-}
-
-.cc-message-buddy-send img:nth-child(2){
-    margin-left: -12px;
-}
-
-.cc-message-user{
-    width: 50%;
-    align-self: self-end;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 5px;
-    padding: 1.5rem;
     background-color: var(--color-user-message);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border-strong);
-/* 
-    background: var(--color-surface);
-    border: 1px solid var(--color-border); */
-}
-
-.cc-message-user-lable{
-    font-size: var(--fs-xs);
-}
-
-.cc-message-user-translation{
-    font-size: var(--fs-sm);
-    color: var(--color-text-muted);
-}
-
-.cc-message-user-stats{
-    font-size: var(--fs-sm);
-    color: var(--color-text-muted);
-    align-self: self-end;
-    display: flex;
-    gap: 0.5rem;
-}
-
-.cc-message-user-send{
-    display: flex;
-}
-
-.cc-message-user-send img {
-    width: var(--fs-xl);
-}
-
-.cc-message-user-send img:nth-child(2){
-    margin-left: -12px;
 }
 
 .cc-io{
-    width: 70%;
+    width: 80%;
     flex-grow: 1;
     display: flex;
     align-items: center;

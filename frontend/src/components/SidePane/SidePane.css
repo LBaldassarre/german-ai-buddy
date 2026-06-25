@@ -1,6 +1,6 @@
 .side-pane{
     flex-grow: 1;
-    max-width: 25vh;
+    max-width: 30vh;
     padding: 1rem;
     display: flex;
     flex-direction: column;
