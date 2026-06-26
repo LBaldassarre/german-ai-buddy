@@ -1,10 +1,18 @@
 import "./Chat.css";
-import { useState } from "react";
-import sendIcon from "../assets/send.svg";
-import micIcon from "../assets/mic.svg";
+import Footer from "../components/Footer/Footer";
+import { useState, useRef, useEffect } from "react";
 
 function Chat() {
     const [chatFormText, setChatFormText] = useState('');
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+    useEffect(() => {
+        const textarea = textareaRef.current;
+        if (!textarea) return;
+
+        textarea.style.height = "0px";
+        textarea.style.height = `${textarea.scrollHeight}px`;
+    }, [chatFormText]);
 
     function sendMessage() {
         if (!chatFormText.trim()) return;
@@ -14,7 +22,7 @@ function Chat() {
         setChatFormText("");
     }
 
-    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
         sendMessage();
     }
@@ -44,31 +52,27 @@ function Chat() {
                     </div>
                 </div>
 
-                {/* <div className="cc-io">
-                    <div className="cc-io-type">
-                        <input type="text" placeholder="Type your message in German" />
-                    </div>
-                    <div className="cc-io-send">
-                        <img src={micIcon} alt="mic"/>
-                    </div>
-                    <div className="cc-io-record">
-                        <img src={sendIcon} alt="send"/>
-                    </div>
-                </div> */}
-
                 <form className="cc-io" onSubmit={handleSubmit}>
-                    <textarea
-                        className="cc-io-type"
-                        id="chatFormText"
-                        placeholder="Write your message here..."
-                        value={chatFormText}
-                        onChange={(e) => setChatFormText(e.target.value)}
-                        onKeyDown={handleKeyDown}
-                    />
+                    <div className="cc-io-box">
+                        <textarea
+                            className="cc-io-type"
+                            id="chatFormText"
+                            placeholder="Write your message here..."
+                            value={chatFormText}
+                            ref={textareaRef}
+                            onChange={(e) => setChatFormText(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                        />
+                    </div>
                     <button className="cc-io-send" type="submit">
                         <span className="material-symbols-outlined">arrow_upward</span>
                     </button>
+                    <button className="cc-io-record" type="submit">
+                        <span className="material-symbols-outlined">mic</span>
+                    </button>
                 </form>
+
+                <Footer/>
             </div>
         </div>
     </>
