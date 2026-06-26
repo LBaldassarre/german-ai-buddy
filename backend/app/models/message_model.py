@@ -4,6 +4,9 @@ import uuid
 class Message(BaseModel):
     user_id: uuid.UUID
     session_id: uuid.UUID
-    promt: str
-    response: str
+    prompt: str
+    answer: str
     role: str
+
+class SendMessageRequest(BaseModel):
+    prompt: str

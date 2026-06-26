@@ -17,8 +17,12 @@ class GeminiAPI:
                     contents=prompt,
                     config=types.GenerateContentConfig(
                         system_instruction="your instructions",
-                        max_output_tokens=100,
+                        max_output_tokens=512,
                         temperature=0.5,
+                        thinking_config=types.ThinkingConfig(
+                            thinking_budget=0
+                        )
             )
             )
+            print(response)
             return response.text

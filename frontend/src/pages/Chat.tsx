@@ -1,10 +1,14 @@
 import "./Chat.css";
 import Footer from "../components/Footer/Footer";
+import Message from "../components/Message/Message";
 import { useState, useRef, useEffect } from "react";
+import type {ChatMessage } from "../types/chatMessage";
+import { createUserMessage, createBuddyMessage, createWelcomeMessage, fetchAIAnswer } from "../services/chatServices"
 
 function Chat() {
     const [chatFormText, setChatFormText] = useState('');
     const textareaRef = useRef<HTMLTextAreaElement>(null);
+    const [messages, setMessages] = useState<ChatMessage[]>([createWelcomeMessage()]);
 
     useEffect(() => {
         const textarea = textareaRef.current;
@@ -14,10 +18,14 @@ function Chat() {
         textarea.style.height = `${textarea.scrollHeight}px`;
     }, [chatFormText]);
 
-    function sendMessage() {
+    async function sendMessage() {
         if (!chatFormText.trim()) return;
 
-        console.log(chatFormText);
+        const newUserMessage = createUserMessage(chatFormText)
+        const buddyResponse = await fetchAIAnswer(chatFormText)
+        const buddyMessage = createBuddyMessage(buddyResponse)
+
+        setMessages(prev => [...prev, newUserMessage, buddyMessage])
 
         setChatFormText("");
     }
@@ -39,17 +47,13 @@ function Chat() {
         <div className="main-pane">
             <div className="chat-container">
                 <div className="cc-chat">
-                    <div className="cc-message buddy">
-                        <div className="cc-message-buddy-content">Hallo! Wie ghet es dir?</div>
-                        <div className="cc-message-buddy-translation">Hi! How are you?</div>
-                    </div>
-                    <div className="cc-message user">
-                        <div className="cc-message-user-content">Ich bin gut und dir?</div>
-                    </div>
-                    <div className="cc-message buddy">
-                        <div className="cc-message-buddy-content">Ich bien auch gut, Danke!</div>
-                        <div className="cc-message-buddy-translation">I am fine too, thanks!</div>
-                    </div>
+                    {messages.map(message => (
+                        <Message
+                            key={message.message_id}
+                            writer={message.writer}
+                            content={message.content}
+                        />
+                    ))}
                 </div>
 
                 <form className="cc-io" onSubmit={handleSubmit}>
